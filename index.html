@@ -3,155 +3,293 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>domate（ドメイト）｜やりたいことを、一緒にやる仲間と。</title>
-<meta name="description" content="最近やった面白いことをシェアして、やりたいけど一緒にやる人がいないことは、条件をつけて仲間を募集。domate は「誘う」と「乗っかる」を気軽にするアプリです。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="domate｜やりたいことを、一緒にやる仲間と。">
-<meta property="og:description" content="体験シェアと仲間募集のアプリ。日時・駅・人数がひと目でわかるチケット型の募集で、今週末の予定がすぐ見つかる。">
-<meta property="og:image" content="https://cherrish-jp.github.io/images/ogp.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ff3b1f">
-<link rel="icon" href="images/icon.png">
-<link rel="apple-touch-icon" href="images/icon.png">
+<title>Cherrish 公式サイト</title>
+<meta name="description" content="Cherrish（チェリッシュ）は、人と人のつながりから生まれる体験をつくるチームです。人のぬくもりを、明日を生きる力に。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Murecho:wght@400;500;700;800;900&family=Archivo:wdth,wght@125,700;125,800;125,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <style>
-body{margin:0;background:#fff}
-a{color:#000}a:hover{color:#ff3b1f}
-.phone{background:#000;border-radius:46px;padding:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35);width:100%;box-sizing:border-box}
-.phone img{display:block;width:100%;border-radius:37px}
-.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border-radius:16px;font-weight:800;font-size:17px;text-decoration:none;transition:transform .1s}
-.cta:active{transform:scale(.97)}
-.feature{display:flex;flex-wrap:wrap;align-items:center;gap:56px 80px}
-.feature .txt{flex:1 1 360px;min-width:0}
-.feature .shots{flex:1 1 420px;display:flex;gap:24px;justify-content:center;min-width:0}
-.feature .shots .phone{max-width:280px}
-@media (max-width:720px){.hero-h{font-size:38px!important}.sec-h{font-size:29px!important}.navlink{display:none}.feature .shots .phone{max-width:46vw}}
-
-.phone img{height:auto}
-html{scroll-behavior:smooth}
+/* VOICE  静かで洗練された、都会のギャラリーのような会社サイト
+   IDEA   ガラス越しに桜が舞う、白い美術館の展示室
+   PICTURE 墨色のCが桜の花びらで結ばれるロゴを大きく据え、背景にはロゴと同じ花びらが舞う
+   COLOUR 白と墨色の二色に、桜色をひとつ。夜は墨の地に淡い桜
+   TYPE   Outfit（ロゴ）＋Cormorant Garamond（欧文見出し）＋しっぽり明朝（見出し）＋Zen角ゴシック New（本文）
+   LAYOUT 1画面目は左下に大きなミッション、右上にロゴマーク。スマホでは マーク→ミッション の順に縦積み */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#121012);--ink:light-dark(#161315,#f2ecee);--sub:light-dark(#5b5357,#b9adb2);--line:light-dark(#e6e1e3,#2e282b);--sakura:light-dark(#e7849d,#f0a3b7);--deep:light-dark(#141113,#0b090a);--deepink:#f4eef0;--deepsub:#b3a8ad;--panel:light-dark(#faf7f8,#1a1618)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 "Zen Kaku Gothic New",system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit}
 img{max-width:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+main,header,footer{position:relative;z-index:1}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(72px,10vw,140px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.serif{font-family:"Shippori Mincho",serif}
+.latin{font-family:"Cormorant Garamond","Shippori Mincho",serif}
+
+header{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px max(5vw,16px);max-width:1340px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:32px;height:32px}
+.brand span{font-family:"Outfit",sans-serif;font-size:17px;font-weight:500;letter-spacing:.32em}
+.nav ul{display:flex;flex-wrap:wrap;gap:4px 26px;list-style:none;margin:0;padding:0;font-size:14px}
+.nav a{text-decoration:none;color:var(--sub);display:inline-block;padding:10px 0}
+.nav a:hover,.nav a:focus-visible{color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sakura);outline-offset:3px;border-radius:4px}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"copy mark";align-items:end;gap:40px;min-height:min(calc(100svh - 64px),860px);padding-top:clamp(48px,7vw,96px)}
+.hero .copy{grid-area:copy;padding-bottom:clamp(8px,3vw,40px)}
+.hero .mark{grid-area:mark;align-self:center;justify-self:end;width:min(100%,520px);aspect-ratio:1}
+.hero .mark svg{width:100%;height:100%;filter:drop-shadow(0 30px 60px color-mix(in srgb,var(--sakura) 18%,transparent))}
+.name{font-family:"Outfit",sans-serif;font-weight:500;font-size:clamp(15px,1.6vw,18px);letter-spacing:.36em;color:var(--sub);margin:0 0 28px}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(38px,6.2vw,84px);line-height:1.22;letter-spacing:.02em;margin:0;text-wrap:balance}
+.hero h1 span{display:block}
+.hero p{max-width:34em;color:var(--sub);margin:30px 0 0;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:500;border:1px solid var(--ink);transition:background .25s,color .25s}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn.solid:hover{background:color-mix(in srgb,var(--ink) 82%,var(--sakura))}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+
+.sec-head{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:24px 56px;align-items:baseline;margin-bottom:clamp(36px,5vw,64px)}
+.sec-head .en{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:500;margin:0;color:var(--sakura)}
+.sec-head h2{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(28px,3.6vw,46px);line-height:1.35;margin:0;text-wrap:balance}
+
+.mv{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:24px 56px;border-top:1px solid var(--line);padding-top:clamp(40px,5vw,64px)}
+.mv+.mv{margin-top:clamp(48px,6vw,80px)}
+.mv .en{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:500;color:var(--sakura);margin:0}
+.mv .big{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(28px,4.2vw,54px);line-height:1.4;margin:0 0 22px;text-wrap:balance}
+.mv .body{color:var(--sub);max-width:40em;margin:0}
+
+.dark{background:var(--deep);color:var(--deepink)}
+.dark .sec-head .en{color:#f0a3b7}
+.values{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid #2f292c}
+.value{padding:34px 26px 38px 0;border-right:1px solid #2f292c;margin-right:26px}
+.value:last-child{border-right:0;margin-right:0}
+.value svg{width:38px;height:38px;fill:#f0a3b7;margin-bottom:26px}
+.value h3{font-family:"Shippori Mincho",serif;font-weight:600;font-size:22px;line-height:1.45;margin:0 0 14px}
+.value p{margin:0;color:var(--deepsub);font-size:15px;line-height:1.8}
+
+.service{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:28px;overflow:hidden;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(6px)}
+.service .art{position:relative;min-height:380px;background:linear-gradient(160deg,color-mix(in srgb,var(--sakura) 26%,var(--bg)),color-mix(in srgb,var(--sakura) 8%,var(--bg)))}
+.service .art svg{position:absolute;inset:0;width:100%;height:100%}
+.service .txt{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:18px}
+.service h3{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,5vw,60px);font-weight:600;line-height:1;margin:0}
+.service .yomi{font-size:14px;color:var(--sub);margin:-6px 0 0}
+.service .lead{font-family:"Shippori Mincho",serif;font-size:21px;font-weight:600;line-height:1.6;margin:0}
+.service ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.service li{display:flex;gap:12px;color:var(--sub);font-size:15px}
+.service li::before{content:"";flex:none;width:7px;height:7px;margin-top:.75em;border-radius:50% 0 50% 50%;background:var(--sakura);transform:rotate(-45deg)}
+.status{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;font-size:13px;padding:6px 14px;border-radius:999px;background:var(--panel);border:1px solid var(--line);color:var(--sub)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--sakura)}
+.next{margin-top:22px;padding:26px 30px;border:1px dashed var(--line);border-radius:20px;color:var(--sub);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;background:color-mix(in srgb,var(--bg) 80%,transparent)}
+.next strong{color:var(--ink);font-family:"Shippori Mincho",serif;font-size:18px;font-weight:600}
+
+.company{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px)}
+dl{margin:0;border-top:1px solid var(--line)}
+dl div{display:grid;grid-template-columns:8em minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+dt{color:var(--sub);font-size:14px}
+dd{margin:0}
+.contact{border-radius:28px;padding:clamp(28px,4vw,48px);background:var(--deep);color:var(--deepink);display:flex;flex-direction:column;gap:18px;justify-content:space-between}
+.contact h3{font-family:"Shippori Mincho",serif;font-size:clamp(24px,2.8vw,32px);line-height:1.5;margin:0;font-weight:600}
+.contact p{margin:0;color:var(--deepsub)}
+.contact .btn{border-color:#f4eef0;color:#f4eef0;align-self:flex-start}
+.contact .btn:hover{background:#f4eef0;color:#141113}
+
+footer{border-top:1px solid var(--line);background:color-mix(in srgb,var(--bg) 90%,transparent)}
+.foot{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between;padding:36px max(5vw,16px);max-width:1340px;margin:0 auto;font-size:13px;color:var(--sub)}
+.foot .brand span{font-size:18px;color:var(--ink)}
+
+@media(max-width:980px){
+.values{grid-template-columns:repeat(2,minmax(0,1fr))}
+.value{border-right:0;margin-right:0;padding-right:20px;border-bottom:1px solid #2f292c}
+.value:last-child{grid-column:1/-1;border-bottom:0}
+}
+@media(max-width:820px){
+.hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"mark" "copy";min-height:0;gap:8px}
+.hero .mark{justify-self:center;width:min(70vw,340px)}
+.sec-head,.mv{grid-template-columns:minmax(0,1fr);gap:10px}
+.service{grid-template-columns:minmax(0,1fr)}
+.service .art{min-height:260px}
+.company{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+.nav ul{gap:0 18px;font-size:13px}
+.values{grid-template-columns:minmax(0,1fr)}
+dl div{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div style="font-family:Murecho,'Hiragino Sans',sans-serif;color:#000;background:#fff;font-feature-settings:'palt';line-height:1.75">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs><g id="logo"><path d="M-9.2,174.8 L-9.1,174.7 L-7.9,173.9 L-7.9,173.9 L-6.0,172.5 L-6.0,172.5 L-4.1,171.0 L-4.1,171.0 L-2.2,169.5 L-2.2,169.5 L-0.4,168.0 L-0.4,167.9 L1.4,166.3 L1.4,166.3 L3.2,164.7 L3.2,164.7 L4.9,163.0 L4.9,162.9 L6.6,161.2 L6.6,161.2 L8.3,159.4 L8.3,159.4 L9.9,157.5 L10.0,157.5 L11.5,155.7 L11.6,155.6 L13.1,153.7 L13.1,153.7 L14.6,151.8 L14.6,151.8 L16.1,149.8 L16.1,149.8 L17.5,147.7 L17.5,147.7 L18.9,145.7 L18.9,145.7 L20.3,143.6 L20.3,143.6 L21.6,141.5 L21.6,141.5 L22.8,139.3 L22.8,139.3 L24.0,137.2 L24.0,137.2 L25.2,135.0 L25.2,135.0 L26.2,132.8 L26.3,132.8 L27.3,130.6 L27.3,130.5 L28.3,128.3 L28.3,128.3 L29.2,126.1 L29.2,126.0 L30.1,123.8 L30.1,123.8 L30.9,121.5 L30.9,121.5 L31.6,119.2 L31.6,119.2 L32.3,116.9 L32.3,116.9 L32.9,114.6 L32.9,114.6 L33.5,112.3 L33.5,112.3 L34.0,110.1 L34.0,109.9 L34.0,109.9 L34.1,109.8 L34.0,109.8 L31.8,110.5 L31.7,110.5 L29.2,111.2 L29.2,111.2 L26.7,111.7 L26.7,111.8 L24.1,112.3 L24.1,112.3 L21.6,112.7 L21.5,112.7 L19.0,113.1 L19.0,113.1 L16.4,113.4 L16.4,113.4 L13.8,113.7 L13.8,113.7 L11.2,113.9 L11.2,113.9 L8.6,114.0 L8.6,114.0 L6.0,114.0 L6.0,114.0 L3.4,114.0 L3.4,114.0 L0.8,113.9 L0.8,113.9 L-1.8,113.7 L-1.8,113.7 L-4.4,113.4 L-4.4,113.4 L-7.0,113.1 L-7.0,113.1 L-9.5,112.7 L-9.6,112.7 L-12.1,112.3 L-12.1,112.3 L-14.7,111.8 L-14.7,111.7 L-17.2,111.2 L-17.2,111.2 L-19.7,110.5 L-19.8,110.5 L-22.3,109.8 L-22.3,109.8 L-24.8,109.0 L-24.8,109.0 L-27.2,108.1 L-27.3,108.1 L-29.7,107.2 L-29.7,107.2 L-32.1,106.2 L-32.2,106.2 L-34.5,105.1 L-34.6,105.1 L-36.9,104.0 L-37.0,104.0 L-39.3,102.8 L-39.3,102.8 L-41.6,101.5 L-41.7,101.5 L-44.0,100.2 L-44.0,100.2 L-46.2,98.8 L-46.3,98.8 L-48.5,97.4 L-48.5,97.3 L-50.7,95.9 L-50.7,95.8 L-52.9,94.3 L-52.9,94.3 L-55.0,92.7 L-55.1,92.6 L-57.1,91.0 L-57.2,91.0 L-59.2,89.2 L-59.2,89.2 L-61.2,87.5 L-61.3,87.4 L-63.2,85.6 L-63.2,85.6 L-65.2,83.7 L-65.2,83.7 L-67.1,81.8 L-67.1,81.7 L-68.9,79.7 L-69.0,79.7 L-70.8,77.7 L-70.8,77.7 L-72.5,75.6 L-72.6,75.6 L-74.3,73.4 L-74.3,73.4 L-75.9,71.2 L-75.9,71.2 L-77.6,69.0 L-77.6,69.0 L-79.1,66.7 L-79.1,66.7 L-80.7,64.4 L-80.7,64.4 L-82.1,62.0 L-82.1,62.0 L-83.5,59.6 L-83.6,59.6 L-84.9,57.2 L-84.9,57.1 L-86.2,54.7 L-86.2,54.7 L-87.5,52.2 L-87.5,52.1 L-88.7,49.6 L-88.7,49.6 L-89.8,47.0 L-89.8,47.0 L-90.9,44.4 L-90.9,44.4 L-91.9,41.8 L-91.9,41.8 L-92.9,39.1 L-92.9,39.1 L-93.8,36.4 L-93.8,36.4 L-94.6,33.7 L-94.7,33.7 L-95.4,31.0 L-95.4,30.9 L-96.2,28.2 L-96.2,28.2 L-96.8,25.4 L-96.8,25.4 L-97.4,22.7 L-97.4,22.6 L-98.0,19.8 L-98.0,19.8 L-98.4,17.0 L-98.4,17.0 L-98.9,14.2 L-98.9,14.2 L-99.2,11.3 L-99.2,11.3 L-99.5,8.5 L-99.5,8.5 L-99.7,5.6 L-99.7,5.6 L-99.9,2.8 L-99.9,2.7 L-100.0,-0.1 L-100.0,-0.1 L-100.0,-3.0 L-100.0,-3.0 L-100.0,-5.9 L-100.0,-5.9 L-99.9,-8.7 L-99.9,-8.8 L-99.7,-11.6 L-99.7,-11.6 L-99.5,-14.5 L-99.5,-14.5 L-99.2,-17.3 L-99.2,-17.3 L-98.9,-20.2 L-98.9,-20.2 L-98.4,-23.0 L-98.4,-23.0 L-98.0,-25.8 L-98.0,-25.8 L-97.4,-28.6 L-97.4,-28.7 L-96.8,-31.4 L-96.8,-31.4 L-96.2,-34.2 L-96.2,-34.2 L-95.4,-36.9 L-95.4,-37.0 L-94.7,-39.7 L-94.6,-39.7 L-93.8,-42.4 L-93.8,-42.4 L-92.9,-45.1 L-92.9,-45.1 L-91.9,-47.8 L-91.9,-47.8 L-90.9,-50.4 L-90.9,-50.4 L-89.8,-53.0 L-89.8,-53.0 L-88.7,-55.6 L-88.7,-55.6 L-87.5,-58.1 L-87.5,-58.2 L-86.2,-60.7 L-86.2,-60.7 L-84.9,-63.1 L-84.9,-63.2 L-83.6,-65.6 L-83.5,-65.6 L-82.1,-68.0 L-82.1,-68.0 L-80.7,-70.4 L-80.7,-70.4 L-79.1,-72.7 L-79.1,-72.7 L-77.6,-75.0 L-77.6,-75.0 L-75.9,-77.2 L-75.9,-77.2 L-74.3,-79.4 L-74.3,-79.4 L-72.6,-81.6 L-72.5,-81.6 L-70.8,-83.7 L-70.8,-83.7 L-69.0,-85.7 L-68.9,-85.7 L-67.1,-87.7 L-67.1,-87.8 L-65.2,-89.7 L-65.2,-89.7 L-63.2,-91.6 L-63.2,-91.6 L-61.3,-93.4 L-61.2,-93.5 L-59.2,-95.2 L-59.2,-95.2 L-57.2,-97.0 L-57.1,-97.0 L-55.1,-98.6 L-55.0,-98.7 L-52.9,-100.3 L-52.9,-100.3 L-50.7,-101.8 L-50.7,-101.9 L-48.5,-103.3 L-48.5,-103.4 L-46.3,-104.8 L-46.2,-104.8 L-44.0,-106.2 L-44.0,-106.2 L-41.7,-107.5 L-41.6,-107.5 L-39.3,-108.8 L-39.3,-108.8 L-37.0,-110.0 L-36.9,-110.0 L-34.6,-111.1 L-34.5,-111.1 L-32.2,-112.2 L-32.1,-112.2 L-29.7,-113.2 L-29.7,-113.2 L-27.3,-114.1 L-27.2,-114.1 L-24.8,-115.0 L-24.8,-115.0 L-22.3,-115.8 L-22.3,-115.8 L-19.8,-116.5 L-19.7,-116.5 L-17.2,-117.2 L-17.2,-117.2 L-14.7,-117.7 L-14.7,-117.8 L-12.1,-118.3 L-12.1,-118.3 L-9.6,-118.7 L-9.5,-118.7 L-7.0,-119.1 L-7.0,-119.1 L-4.4,-119.4 L-4.4,-119.4 L-1.8,-119.7 L-1.8,-119.7 L0.8,-119.9 L0.8,-119.9 L3.4,-120.0 L3.4,-120.0 L6.0,-120.0 L6.0,-120.0 L8.6,-120.0 L8.6,-120.0 L11.2,-119.9 L11.2,-119.9 L13.8,-119.7 L13.8,-119.7 L16.4,-119.4 L16.4,-119.4 L19.0,-119.1 L19.0,-119.1 L21.5,-118.7 L21.6,-118.7 L24.1,-118.3 L24.1,-118.3 L26.7,-117.8 L26.7,-117.7 L29.2,-117.2 L29.2,-117.2 L31.7,-116.5 L31.8,-116.5 L34.3,-115.8 L34.3,-115.8 L36.8,-115.0 L36.8,-115.0 L39.2,-114.1 L39.3,-114.1 L41.7,-113.2 L41.7,-113.2 L44.1,-112.2 L44.2,-112.2 L46.5,-111.1 L46.6,-111.1 L48.9,-110.0 L49.0,-110.0 L51.3,-108.8 L51.3,-108.8 L53.6,-107.5 L53.7,-107.5 L56.0,-106.2 L56.0,-106.2 L58.2,-104.8 L58.3,-104.8 L60.5,-103.4 L60.5,-103.3 L62.7,-101.9 L62.7,-101.8 L64.9,-100.3 L64.9,-100.3 L67.0,-98.7 L67.1,-98.6 L69.1,-97.0 L69.2,-97.0 L71.2,-95.2 L71.2,-95.2 L73.2,-93.5 L73.3,-93.4 L75.2,-91.6 L75.2,-91.6 L77.2,-89.7 L77.2,-89.7 L79.1,-87.8 L79.1,-87.7 L80.9,-85.7 L81.0,-85.7 L82.8,-83.7 L82.8,-83.7 L84.5,-81.6 L84.6,-81.6 L86.3,-79.4 L86.3,-79.4 L87.9,-77.2 L87.9,-77.2 L89.6,-75.0 L89.6,-75.0 L91.1,-72.7 L91.1,-72.7 L92.7,-70.4 L92.7,-70.4 L94.1,-68.0 L94.1,-68.0 L95.5,-65.6 L95.6,-65.6 L96.9,-63.2 L96.9,-63.1 L98.2,-60.7 L98.2,-60.7 L99.5,-58.2 L99.5,-58.1 L100.7,-55.6 L100.7,-55.6 L100.9,-55.1 L101.0,-55.0 L101.0,-55.0 L174.6,-55.0 L174.7,-55.0 L174.7,-55.1 L173.2,-58.9 L173.2,-59.0 L171.7,-63.0 L171.7,-63.0 L170.0,-67.0 L170.0,-67.0 L168.2,-70.9 L168.2,-70.9 L166.3,-74.8 L166.3,-74.8 L164.4,-78.7 L164.3,-78.7 L162.3,-82.5 L162.3,-82.5 L160.1,-86.2 L160.1,-86.3 L157.8,-90.0 L157.8,-90.0 L155.5,-93.6 L155.4,-93.6 L153.0,-97.2 L153.0,-97.2 L150.4,-100.8 L150.4,-100.8 L147.8,-104.2 L147.8,-104.3 L145.1,-107.7 L145.0,-107.7 L142.2,-111.0 L142.2,-111.0 L139.3,-114.3 L139.3,-114.3 L136.3,-117.5 L136.3,-117.5 L133.3,-120.7 L133.3,-120.7 L130.1,-123.7 L130.1,-123.7 L126.9,-126.7 L126.9,-126.7 L123.6,-129.7 L123.6,-129.7 L120.2,-132.5 L120.2,-132.5 L116.7,-135.3 L116.7,-135.3 L113.2,-138.0 L113.2,-138.0 L109.6,-140.6 L109.6,-140.6 L106.0,-143.1 L105.9,-143.1 L102.2,-145.5 L102.2,-145.5 L98.4,-147.8 L98.4,-147.9 L94.6,-150.1 L94.6,-150.1 L90.7,-152.3 L90.7,-152.3 L86.7,-154.3 L86.7,-154.3 L82.7,-156.3 L82.7,-156.3 L78.7,-158.2 L78.7,-158.2 L74.6,-160.0 L74.6,-160.0 L70.4,-161.7 L70.4,-161.7 L66.2,-163.3 L66.2,-163.3 L62.0,-164.8 L62.0,-164.8 L57.7,-166.2 L57.7,-166.2 L53.4,-167.5 L53.4,-167.5 L49.1,-168.7 L49.1,-168.7 L44.7,-169.8 L44.7,-169.8 L40.3,-170.7 L40.3,-170.7 L35.9,-171.6 L35.9,-171.6 L31.5,-172.4 L31.4,-172.4 L27.0,-173.1 L27.0,-173.1 L22.5,-173.7 L22.5,-173.7 L18.0,-174.2 L18.0,-174.2 L13.5,-174.5 L13.5,-174.5 L9.0,-174.8 L9.0,-174.8 L4.5,-174.9 L4.5,-174.9 L0.0,-175.0 L-0.0,-175.0 L-4.5,-174.9 L-4.5,-174.9 L-9.0,-174.8 L-9.0,-174.8 L-13.5,-174.5 L-13.5,-174.5 L-18.0,-174.2 L-18.0,-174.2 L-22.5,-173.7 L-22.5,-173.7 L-27.0,-173.1 L-27.0,-173.1 L-31.4,-172.4 L-31.5,-172.4 L-35.9,-171.6 L-35.9,-171.6 L-40.3,-170.7 L-40.3,-170.7 L-44.7,-169.8 L-44.7,-169.8 L-49.1,-168.7 L-49.1,-168.7 L-53.4,-167.5 L-53.4,-167.5 L-57.7,-166.2 L-57.7,-166.2 L-62.0,-164.8 L-62.0,-164.8 L-66.2,-163.3 L-66.2,-163.3 L-70.4,-161.7 L-70.4,-161.7 L-74.6,-160.0 L-74.6,-160.0 L-78.7,-158.2 L-78.7,-158.2 L-82.7,-156.3 L-82.7,-156.3 L-86.7,-154.3 L-86.7,-154.3 L-90.7,-152.3 L-90.7,-152.3 L-94.6,-150.1 L-94.6,-150.1 L-98.4,-147.9 L-98.4,-147.8 L-102.2,-145.5 L-102.2,-145.5 L-105.9,-143.1 L-106.0,-143.1 L-109.6,-140.6 L-109.6,-140.6 L-113.2,-138.0 L-113.2,-138.0 L-116.7,-135.3 L-116.7,-135.3 L-120.2,-132.5 L-120.2,-132.5 L-123.6,-129.7 L-123.6,-129.7 L-126.9,-126.7 L-126.9,-126.7 L-130.1,-123.7 L-130.1,-123.7 L-133.3,-120.7 L-133.3,-120.7 L-136.3,-117.5 L-136.3,-117.5 L-139.3,-114.3 L-139.3,-114.3 L-142.2,-111.0 L-142.2,-111.0 L-145.0,-107.7 L-145.1,-107.7 L-147.8,-104.3 L-147.8,-104.2 L-150.4,-100.8 L-150.4,-100.8 L-153.0,-97.2 L-153.0,-97.2 L-155.4,-93.6 L-155.5,-93.6 L-157.8,-90.0 L-157.8,-90.0 L-160.1,-86.3 L-160.1,-86.2 L-162.3,-82.5 L-162.3,-82.5 L-164.3,-78.7 L-164.4,-78.7 L-166.3,-74.8 L-166.3,-74.8 L-168.2,-70.9 L-168.2,-70.9 L-170.0,-67.0 L-170.0,-67.0 L-171.7,-63.0 L-171.7,-63.0 L-173.2,-59.0 L-173.2,-58.9 L-174.7,-54.9 L-174.7,-54.9 L-176.1,-50.8 L-176.1,-50.8 L-177.3,-46.7 L-177.3,-46.7 L-178.5,-42.5 L-178.5,-42.5 L-179.5,-38.4 L-179.5,-38.3 L-180.5,-34.2 L-180.5,-34.1 L-181.3,-29.9 L-181.3,-29.9 L-182.0,-25.7 L-182.0,-25.7 L-182.6,-21.4 L-182.6,-21.4 L-183.1,-17.2 L-183.1,-17.1 L-183.5,-12.9 L-183.5,-12.9 L-183.8,-8.6 L-183.8,-8.6 L-183.9,-4.3 L-183.9,-4.3 L-184.0,-0.0 L-184.0,0.0 L-183.9,4.3 L-183.9,4.3 L-183.8,8.6 L-183.8,8.6 L-183.5,12.9 L-183.5,12.9 L-183.1,17.1 L-183.1,17.2 L-182.6,21.4 L-182.6,21.4 L-182.0,25.7 L-182.0,25.7 L-181.3,29.9 L-181.3,29.9 L-180.5,34.1 L-180.5,34.2 L-179.5,38.3 L-179.5,38.4 L-178.5,42.5 L-178.5,42.5 L-177.3,46.7 L-177.3,46.7 L-176.1,50.8 L-176.1,50.8 L-174.7,54.9 L-174.7,54.9 L-173.2,58.9 L-173.2,59.0 L-171.7,63.0 L-171.7,63.0 L-170.0,67.0 L-170.0,67.0 L-168.2,70.9 L-168.2,70.9 L-166.3,74.8 L-166.3,74.8 L-164.4,78.7 L-164.3,78.7 L-162.3,82.5 L-162.3,82.5 L-160.1,86.2 L-160.1,86.3 L-157.8,90.0 L-157.8,90.0 L-155.5,93.6 L-155.4,93.6 L-153.0,97.2 L-153.0,97.2 L-150.4,100.8 L-150.4,100.8 L-147.8,104.2 L-147.8,104.3 L-145.1,107.7 L-145.0,107.7 L-142.2,111.0 L-142.2,111.0 L-139.3,114.3 L-139.3,114.3 L-136.3,117.5 L-136.3,117.5 L-133.3,120.7 L-133.3,120.7 L-130.1,123.7 L-130.1,123.7 L-126.9,126.7 L-126.9,126.7 L-123.6,129.7 L-123.6,129.7 L-120.2,132.5 L-120.2,132.5 L-116.7,135.3 L-116.7,135.3 L-113.2,138.0 L-113.2,138.0 L-109.6,140.6 L-109.6,140.6 L-106.0,143.1 L-105.9,143.1 L-102.2,145.5 L-102.2,145.5 L-98.4,147.8 L-98.4,147.9 L-94.6,150.1 L-94.6,150.1 L-90.7,152.3 L-90.7,152.3 L-86.7,154.3 L-86.7,154.3 L-82.7,156.3 L-82.7,156.3 L-78.7,158.2 L-78.7,158.2 L-74.6,160.0 L-74.6,160.0 L-70.4,161.7 L-70.4,161.7 L-66.2,163.3 L-66.2,163.3 L-62.0,164.8 L-62.0,164.8 L-57.7,166.2 L-57.7,166.2 L-53.4,167.5 L-53.4,167.5 L-49.1,168.7 L-49.1,168.7 L-44.7,169.8 L-44.7,169.8 L-40.3,170.7 L-40.3,170.7 L-35.9,171.6 L-35.9,171.6 L-31.5,172.4 L-31.4,172.4 L-27.0,173.1 L-27.0,173.1 L-22.5,173.7 L-22.5,173.7 L-18.0,174.2 L-18.0,174.2 L-13.5,174.5 L-13.5,174.5 L-9.3,174.8 Z" fill="var(--ink)"></path><path d="M9,176 C28,160 40,135 52,108 C72,62 110,26 192,26 C178,90 110,165 9,176 Z" fill="var(--sakura)"></path></g><path id="petal" d="M9,176 C28,160 40,135 52,108 C72,62 110,26 192,26 C178,90 110,165 9,176 Z"></path></defs>
+</svg>
+<canvas id="petals" aria-hidden="true"></canvas>
+<span id="probe" style="color:var(--sakura);display:none"></span>
 
-<header style="max-width:1200px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
-<a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#000;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:26px;letter-spacing:-0.02em"><span style="width:18px;height:18px;border-radius:50%;background:#ff3b1f;box-shadow:6px -6px 0 -4px #00a35c;display:inline-block"></span>domate</a>
-<nav style="display:flex;align-items:center;gap:24px;font-weight:700;font-size:15px;flex-wrap:wrap">
-<a href="#features" class="navlink" style="text-decoration:none">できること</a>
-<a href="#how" class="navlink" style="text-decoration:none">使い方</a>
-<a href="#safety" class="navlink" style="text-decoration:none">安心のしくみ</a>
-<a class="cta" href="https://cherrish-jp.github.io/domate/" style="background:#ff3b1f;color:#fff;min-height:44px;font-size:15px;padding:0 20px">はじめる</a>
+<header>
+<nav class="nav" aria-label="メインメニュー">
+<a class="brand" href="#top" aria-label="Cherrish トップへ"><svg viewBox="-195 -185 390 370" aria-hidden="true"><use href="#logo"></use></svg><span>CHERRISH</span></a>
+<ul>
+<li><a href="#mission">ミッション</a></li>
+<li><a href="#values">バリュー</a></li>
+<li><a href="#service">サービス</a></li>
+<li><a href="#company">会社情報</a></li>
+</ul>
 </nav>
 </header>
 
-<section id="top" style="max-width:1200px;margin:0 auto;padding:40px 24px 0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:48px">
-<div style="flex:1 1 480px;min-width:0;padding-bottom:96px">
-<h1 class="hero-h" style="margin:0;font-size:76px;line-height:1.18;font-weight:900;letter-spacing:-0.02em">やりたいことを、<br>一緒にやる<br>仲間と。</h1>
-<p style="margin:28px 0 0;font-size:18px;color:#333;max-width:30em">最近やった面白いことをシェアして、やりたいけど一緒にやる人がいないことは、条件をつけて仲間を募集。domate は「誘う」と「乗っかる」を気軽にするアプリです。</p>
-<div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:36px">
-<a class="cta" href="https://cherrish-jp.github.io/domate/" style="background:#ff3b1f;color:#fff">無料ではじめる</a>
-<span style="font-size:14px;color:#6f6f6f">インストール不要。スマホのブラウザですぐ使えます</span>
+<main id="top">
+<section class="band">
+<div class="wrap hero">
+<div class="copy">
+<p class="name">CHERRISH</p>
+<h1><span>人のぬくもりを、</span><span>明日を生きる力に。</span></h1>
+<p>AIが「正解」をすぐに出してくれる時代だからこそ、人と人のあいだに生まれる温かさを大切にしたい。Cherrishは、誰かの「やりたい」が誰かに拾われ、また次の誰かへと渡っていく体験をつくります。</p>
+<div class="cta">
+<a class="btn solid" href="#service">サービスを見る</a>
+<a class="btn ghost" href="#mission">私たちの想い</a>
 </div>
 </div>
-<div style="flex:0 1 460px;min-width:0;position:relative;display:flex;justify-content:center">
-<div style="position:absolute;left:50%;bottom:0;width:440px;height:440px;max-width:100%;transform:translateX(-50%);background:#ff3b1f;border-radius:50%"></div>
-<div style="position:absolute;left:calc(50% + 120px);bottom:380px;width:60px;height:50px;background:#00a35c;clip-path:polygon(50% 100%,0% 15%,40% 55%,50% 0%,60% 55%,100% 15%)" aria-hidden="true"></div>
-<div class="phone" style="position:relative;max-width:330px;margin-bottom:-60px"><img src="images/home.jpg" width="780" height="1688" alt="domate のホーム画面。体験シェアと、日付つきのチケット型の仲間募集が並んでいる"></div>
-</div>
-</section>
-
-<section style="background:#000;color:#fff;padding:120px 24px 96px">
-<div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center">
-<p class="sec-h" style="margin:0;flex:1 1 420px;font-size:44px;line-height:1.35;font-weight:900">「今度行こう」が、<br>本当に行く予定になる。</p>
-<p style="margin:0;flex:1 1 360px;font-size:17px;color:#cfcfcf">行きたいお店、やってみたいこと。LINEで誘うには重いし、インスタのストーリーでは流れてしまう。domate なら、やりたい人だけが手を挙げるので、誘う側も断る側も気まずくなりません。</p>
+<div class="mark"><svg viewBox="-195 -185 390 370" role="img" aria-label="Cherrish のロゴマーク。墨色のCの終わりが、桜の花びらになっている"><use href="#logo"></use></svg></div>
 </div>
 </section>
 
-<section id="features" style="max-width:1200px;margin:0 auto;padding:120px 24px 40px;display:flex;flex-direction:column;gap:140px">
+<section class="band" id="mission">
+<div class="wrap">
+<div class="mv">
+<p class="en">Mission</p>
+<div>
+<p class="big">人のぬくもりを、明日を生きる力に。</p>
+<p class="body">憧れの人の本気に勇気をもらった日。思いがけないご縁が、考え方を変えてくれた日。「じゃあ、やろう」の一言で、初めての景色を見た日。私たちの明日を動かしてきたのは、いつも人の温かさでした。Cherrishは、その温かさが生まれる瞬間を、もっと多くの人に届けます。</p>
+</div>
+</div>
+<div class="mv">
+<p class="en">Vision</p>
+<div>
+<p class="big">温かみが、巡り続ける世界へ。</p>
+<p class="body">誰かの言葉や行動が誰かの人生を変え、その人がまた誰かに力を渡す。桜の花びらが風に乗って次の場所へ届くように、受け取った温かさが途切れずに巡っていく世界をつくります。そしていつか、地球そのもののエネルギーに。</p>
+</div>
+</div>
+</div>
+</section>
 
-<div class="feature">
+<section class="band dark" id="values">
+<div class="wrap">
+<div class="sec-head">
+<p class="en">Value</p>
+<h2>五枚の花びらに込めた、私たちの約束。</h2>
+</div>
+<div class="values" id="valueList"></div>
+</div>
+</section>
+
+<section class="band" id="service">
+<div class="wrap">
+<div class="sec-head">
+<p class="en">Service</p>
+<h2>「やりたい」が、ひとりで終わらないように。</h2>
+</div>
+<article class="service">
+<div class="art" id="domateArt" aria-hidden="true"></div>
 <div class="txt">
-<p style="margin:0 0 12px;font-weight:800;color:#3a55c8;font-size:15px">さがす</p>
-<h2 class="sec-h" style="margin:0;font-size:44px;line-height:1.3;font-weight:900">今週末ひま？が、<br>すぐ見つかる。</h2>
-<p style="margin:20px 0 0;font-size:17px;color:#333">仲間募集は、日時・駅・人数がひと目でわかるチケットの形。カレンダーで募集がある日を確かめたり、いつもの沿線やカテゴリで絞り込んだりできます。</p>
+<span class="status"><i></i>近日公開</span>
+<h3>DoMate</h3>
+<p class="yomi">ドゥーメイト</p>
+<p class="lead">やりたいことをつぶやくと、誰かが「じゃあやろう」と拾ってくれる場所。</p>
+<ul>
+<li>最近やった面白いことをシェアして、誰かの休日のヒントに</li>
+<li>日時・エリア・人数を決めて、一緒にやる仲間を募集</li>
+<li>友達どうしの小さなルームで、気軽に誘える・気軽に乗れる</li>
+<li>18歳以上の確認や通報・ブロックなど、安心して使える仕組み</li>
+</ul>
+<a class="btn solid" style="align-self:flex-start" href="https://cherrish-jp.github.io/domate-site1120/">DoMateを見る</a>
 </div>
-<div class="shots">
-<div class="phone"><img src="images/calendar.jpg" width="780" height="1688" loading="lazy" alt="カレンダーで、募集がある日が青く表示されている画面"></div>
-<div class="phone" style="margin-top:80px"><img src="images/area.jpg" width="780" height="1688" loading="lazy" alt="沿線を複数選んで絞り込む画面"></div>
-</div>
-</div>
-
-<div class="feature" style="flex-direction:row-reverse">
-<div class="txt">
-<p style="margin:0 0 12px;font-weight:800;color:#3a55c8;font-size:15px">安心してつながる</p>
-<h2 class="sec-h" style="margin:0;font-size:44px;line-height:1.3;font-weight:900">誰が来るのか、<br>ちゃんとわかる。</h2>
-<p style="margin:20px 0 0;font-size:17px;color:#333">参加は申請制。募集した人は、相手の年代や、これまでに主催・参加した回数を見てから OK できます。参加が決まった人だけのチャットで、集合場所を決めましょう。</p>
-</div>
-<div class="shots">
-<div class="phone"><img src="images/requests.jpg" width="780" height="1688" loading="lazy" alt="参加申請の一覧。申請者の年代・性別・主催と参加の回数が表示されている"></div>
-<div class="phone" style="margin-top:80px"><img src="images/profile.jpg" width="780" height="1688" loading="lazy" alt="公開プロフィール。主催した回数と参加した回数、趣味タグが表示されている"></div>
-</div>
-</div>
-
-<div class="feature">
-<div class="txt">
-<p style="margin:0 0 12px;font-weight:800;color:#3a55c8;font-size:15px">おもいで</p>
-<h2 class="sec-h" style="margin:0;font-size:44px;line-height:1.3;font-weight:900">終わったら、<br>みんなの写真でコラージュに。</h2>
-<p style="margin:20px 0 0;font-size:17px;color:#333">当日の写真を参加メンバーだけのアルバムに集めると、1枚のコラージュが自動でできあがります。写っている全員が OK したときだけ、保存や SNS へのシェアができます。</p>
-</div>
-<div class="shots">
-<div class="phone"><img src="images/collage.jpg" width="780" height="1688" loading="lazy" alt="イベント後に作られた写真コラージュと、メンバーのシェアOK状況"></div>
-</div>
-</div>
-
-<div class="feature" style="flex-direction:row-reverse">
-<div class="txt">
-<p style="margin:0 0 12px;font-weight:800;color:#3a55c8;font-size:15px">ルーム</p>
-<h2 class="sec-h" style="margin:0;font-size:44px;line-height:1.3;font-weight:900">仲のいい人だけの<br>小さな場所も。</h2>
-<p style="margin:20px 0 0;font-size:17px;color:#333">サークル、ゼミ、地元の友達。招待リンクで入れるルームなら、メンバーにだけ見える投稿や募集ができます。ルームごとに呼ばれたい名前も設定できます。</p>
-</div>
-<div class="shots">
-<div class="phone"><img src="images/chat.jpg" width="780" height="1688" loading="lazy" alt="参加が決まった人どうしのチャット画面"></div>
-</div>
+</article>
+<div class="next"><strong>次のサービスも準備中です。</strong><span>初めて主催する人の背中を押すもの。立場の違う人どうしが出会えるもの。誰かの挑戦を応援し合えるもの。</span></div>
 </div>
 </section>
 
-<section id="how" style="background:#f5f5f5;padding:110px 24px">
-<div style="max-width:1200px;margin:0 auto">
-<h2 class="sec-h" style="margin:0 0 48px;font-size:44px;line-height:1.3;font-weight:900">使い方</h2>
-<ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px">
-<li style="background:#fff;border-radius:20px;padding:28px"><span style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:40px;color:#ff3b1f">1</span><h3 style="margin:8px 0 6px;font-size:20px;font-weight:800">見つける・募集する</h3><p style="margin:0;color:#444;font-size:15px">気になる募集を探すか、やりたいことを日時と駅つきで募集します。</p></li>
-<li style="background:#fff;border-radius:20px;padding:28px"><span style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:40px;color:#ff3b1f">2</span><h3 style="margin:8px 0 6px;font-size:20px;font-weight:800">申請して、OKをもらう</h3><p style="margin:0;color:#444;font-size:15px">ひとこと添えて参加を申請。募集した人がプロフィールを見て決めます。</p></li>
-<li style="background:#fff;border-radius:20px;padding:28px"><span style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:40px;color:#ff3b1f">3</span><h3 style="margin:8px 0 6px;font-size:20px;font-weight:800">チャットで待ち合わせ</h3><p style="margin:0;color:#444;font-size:15px">参加が決まったメンバーだけのチャットで、集合場所や時間を決めます。</p></li>
-<li style="background:#fff;border-radius:20px;padding:28px"><span style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:40px;color:#ff3b1f">4</span><h3 style="margin:8px 0 6px;font-size:20px;font-weight:800">おもいでをシェア</h3><p style="margin:0;color:#444;font-size:15px">写真をコラージュにして、体験シェアとして投稿。次のだれかの「やりたい」に。</p></li>
-</ol>
+<section class="band" id="company">
+<div class="wrap">
+<div class="sec-head">
+<p class="en">Company</p>
+<h2>会社情報</h2>
+</div>
+<div class="company">
+<dl>
+<div><dt>名称</dt><dd>Cherrish（チェリッシュ）<br>合同会社として設立準備中</dd></div>
+<div><dt>事業内容</dt><dd>人と人をつなぐ体験・コミュニティサービスの企画、開発、運営</dd></div>
+<div><dt>サービス</dt><dd>DoMate（ドゥーメイト）</dd></div>
+<div><dt>GitHub</dt><dd><a href="https://github.com/cherrish-jp">github.com/cherrish-jp</a></dd></div>
+</dl>
+<div class="contact">
+<h3>一緒に、温かみを巡らせませんか。</h3>
+<p>サービスへのご意見、協業のご相談、取材のご依頼など、お気軽にご連絡ください。</p>
+<a class="btn" href="https://github.com/cherrish-jp">GitHubから連絡する</a>
+</div>
+</div>
 </div>
 </section>
+</main>
 
-<section id="safety" style="max-width:1200px;margin:0 auto;padding:110px 24px">
-<h2 class="sec-h" style="margin:0 0 40px;font-size:44px;line-height:1.3;font-weight:900">安心して使うために</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px 40px">
-<div style="border-top:3px solid #000;padding-top:18px"><h3 style="margin:0 0 6px;font-size:19px;font-weight:800">18歳以上の方だけ</h3><p style="margin:0;color:#444;font-size:15px">登録時に年齢を確認しています。出会い目的・勧誘・営業での利用は禁止です。</p></div>
-<div style="border-top:3px solid #000;padding-top:18px"><h3 style="margin:0 0 6px;font-size:19px;font-weight:800">通報・ブロック</h3><p style="margin:0;color:#444;font-size:15px">気になる投稿や相手は、すぐに通報・ブロックできます。相手には通知されません。</p></div>
-<div style="border-top:3px solid #000;padding-top:18px"><h3 style="margin:0 0 6px;font-size:19px;font-weight:800">場所は決まってから</h3><p style="margin:0;color:#444;font-size:15px">募集に書くのは駅やエリアまで。細かい集合場所は、参加が決まってからチャットで伝えます。</p></div>
-</div>
-</section>
-
-<section style="background:#ff3b1f;color:#fff;padding:110px 24px;text-align:center">
-<h2 class="sec-h" style="margin:0;font-size:52px;line-height:1.3;font-weight:900">やりたいこと、<br>今週末やっちゃおう。</h2>
-<a class="cta" href="https://cherrish-jp.github.io/domate/" style="background:#fff;color:#000;margin-top:40px;min-height:64px;font-size:19px;padding:0 44px">無料ではじめる</a>
-<p style="margin:16px 0 0;font-size:14px;color:#ffe2dc">インストール不要・ブラウザで使えます</p>
-</section>
-
-<footer style="max-width:1200px;margin:0 auto;padding:40px 24px 56px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:#6f6f6f">
-<span><b style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;color:#000">domate</b>　by Cherrish</span>
+<footer>
+<div class="foot">
+<a class="brand" href="#top"><svg viewBox="-195 -185 390 370" aria-hidden="true"><use href="#logo"></use></svg><span>CHERRISH</span></a>
+<span>人のぬくもりを、明日を生きる力に。</span>
 <span>© 2026 Cherrish</span>
-</footer>
 </div>
+</footer>
 
+<script>
+{
+const values=[
+ ["「じゃあ、やろう」","誰かの「やりたい」を聞き流さず、拾って形にする。"],
+ ["ご縁をひらく","普段なら出会わない人どうしが、出会うきっかけをつくる。"],
+ ["本気は伝わる","自分たちが全力でやる姿が、誰かの力になると信じる。"],
+ ["受け取ったら、渡す","もらった力を次の人へ。受け取る側を、渡す側に変えていく。"],
+ ["主役は人","AIは道具として使い倒す。温かみを生むのは、いつも人。"]
+];
+document.getElementById('valueList').innerHTML=values.map((v,i)=>`<div class="value"><svg viewBox="0 10 200 180" aria-hidden="true" style="transform:rotate(${i*72}deg)"><use href="#petal"></use></svg><h3>${v[0]}</h3><p>${v[1]}</p></div>`).join('');
+
+const art=document.getElementById('domateArt');
+const drawArt=()=>{
+ const W=art.clientWidth,H=art.clientHeight;
+ const bubbles=[[0.16,0.24,"週末、高尾山いきたい人！"],[0.40,0.50,"じゃあやろう！"],[0.18,0.74,"3人集まりました"]];
+ const bw=Math.min(W*0.62,300);
+ art.innerHTML=`<svg viewBox="0 0 ${W} ${H}">${bubbles.map((b,i)=>{const x=Math.min(W*b[0],W-bw-16),y=H*b[1];const r=i===1;return `<g transform="translate(${x} ${y})"><rect x="0" y="-26" width="${bw}" height="52" rx="26" fill="${r?'var(--ink)':'var(--bg)'}" stroke="var(--line)"/><text x="22" y="6" font-size="15" font-family="Zen Kaku Gothic New, sans-serif" fill="${r?'var(--bg)':'var(--ink)'}">${b[2]}</text></g>`}).join('')}</svg>`;
+};
+const ro=new ResizeObserver(drawArt);ro.observe(art);
+
+const cv=document.getElementById('petals'),ctx=cv.getContext('2d');
+const shape=new Path2D(document.querySelector('#petal').getAttribute('d'));
+const still=matchMedia('(prefers-reduced-motion: reduce)');
+let W=0,H=0,dpr=1,ps=[],col='#e7849d';
+let s=20261124;const rnd=()=>(s=s*16807%2147483647)/2147483647;
+const make=(top)=>({x:rnd()*W,y:top?-40-rnd()*H*0.3:rnd()*H,z:0.35+rnd()*0.65,a:rnd()*6.28,va:(rnd()-0.5)*0.012,f:rnd()*6.28,vf:0.008+rnd()*0.014,sw:rnd()*6.28,vy:0.25+rnd()*0.35});
+const size=()=>{dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;col=getComputedStyle(document.getElementById('probe')).color||col;const n=Math.round(Math.min(34,Math.max(14,W*H/42000)));ps=Array.from({length:n},()=>make(false));};
+const draw=()=>{
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);ctx.fillStyle=col;
+ for(const p of ps){
+  const k=p.z*0.1;
+  ctx.save();ctx.globalAlpha=0.18+p.z*0.42;ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.scale(k,k*Math.max(0.18,Math.abs(Math.cos(p.f))));ctx.translate(-100,-100);ctx.fill(shape);ctx.restore();
+ }
+};
+const step=()=>{
+ for(const p of ps){p.sw+=0.006;p.x+=Math.sin(p.sw)*0.35*p.z+0.12;p.y+=p.vy*p.z;p.a+=p.va;p.f+=p.vf;if(p.y>H+40||p.x>W+40){Object.assign(p,make(true));}}
+ draw();if(!still.matches)requestAnimationFrame(step);
+};
+size();draw();if(!still.matches)requestAnimationFrame(step);
+addEventListener('resize',()=>{size();draw();});
+const mq=matchMedia('(prefers-color-scheme: dark)');
+const recol=()=>{col=getComputedStyle(document.getElementById('probe')).color||col;draw();};
+mq.addEventListener('change',recol);
+new MutationObserver(recol).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+}
+</script>
 </body>
 </html>
